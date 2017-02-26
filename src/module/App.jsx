@@ -1,11 +1,8 @@
 import React from 'react';
-import axios from 'axios';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
+import {Layout, Menu} from 'antd';
+import 'antd/dist/antd.css';
 
-
-import PostList from '../partial/PostList.jsx';
-
+const {Header, Content, Footer} = Layout;
 
 class App extends React.Component {
     constructor(props) {
@@ -27,12 +24,22 @@ class App extends React.Component {
 
     render() {
         return (
-        <div>
-            <MuiThemeProvider>
-                <AppBar/>
-            </MuiThemeProvider>
-            {this.props.children}
-        </div>
+
+            <Layout className="layout">
+                <div>
+                    <Menu mode="horizontal" theme="light">
+                        <Menu.Item key="1">Index</Menu.Item>
+                    </Menu>
+                </div>
+
+                <Content>
+                    {this.props.children}
+                </Content>
+
+                <Footer>
+                    Designed by zhboner.
+                </Footer>
+            </Layout>
 
 
     )

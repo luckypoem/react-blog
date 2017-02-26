@@ -1,10 +1,7 @@
 import React from 'react';
 import PostCard from './PostCard.jsx'
 import axios from 'axios';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {
-    Card, CardActions, CardHeader, CardMedia, CardTitle, CardText
-} from 'material-ui/Card';
+
 
 class PostList extends React.Component {
     constructor(props) {
@@ -23,31 +20,28 @@ class PostList extends React.Component {
         })
     }
 
-
     render() {
         if (this.state.ready) {
-
+            let i = 0;
 
             return (
                 <div>
                 {
                     this.state.posts.map((post) => {
-                        return (<MuiThemeProvider key={post.title}><PostCard post={post}/></MuiThemeProvider>)
+                        i += 1;
+                        return (
+                            <PostCard post={post} key={i}/>
+                        )
                     })
                 }
                 </div>
-
             )
         }
         else {
             return (
-                <MuiThemeProvider>
-                    <Card/>
-                </MuiThemeProvider>
+                <div></div>
             )
         }
-
-
     }
 }
 
