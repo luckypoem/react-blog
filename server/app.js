@@ -3,10 +3,16 @@ const app = require('koa')(),
     bodyParser = require('koa-bodyparser'),
     koaStatic = require('koa-static');
 
-const routes = require('./router');
+const indexRoutes = require('./router/main'),
+    apiRoutes = require('./router');
 
 app.use(koaStatic('./public'));
-app.use(routes.routes()).use(routes.allowedMethods());
+
+app.use(apiRoutes.routes()).use(apiRoutes.allowedMethods());
+app.use(indexRoutes.routes()).use(indexRoutes.allowedMethods());
+
+
+
 app.use(bodyParser());
 
 app.listen(3000);

@@ -14,7 +14,7 @@ class PostCard extends React.Component {
             <Card key={post.title}>
                 <CardActions actAsExpander={true}/>
                 <CardTitle title={post.title} subtitle={post.excerpt} actAsExpander={true}/>
-                <CardText expandable={true}>{post.text}</CardText>
+                <CardText expandable={true}>{post.content}</CardText>
             </Card>
         )
     }

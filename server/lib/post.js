@@ -10,7 +10,7 @@ exports.getPostById = function (id) {
 
 exports.getPostsList = function (p) {
     var query = {};
-    return pm = post.find(query).skip((p - 1) * 10).sort('updated_time').limit(10).exec();
+    return post.find(query).skip((p - 1) * 10).sort({'updated_time': -1}).limit(10).exec();
 };
 
 exports.getPostsByClass = function (Class) {

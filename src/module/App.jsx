@@ -1,8 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBar from 'material-ui/AppBar';
 
-import PostList from './PostList.jsx';
+
+import PostList from '../partial/PostList.jsx';
+
 
 class App extends React.Component {
     constructor(props) {
@@ -19,20 +22,20 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        console.log("Fetch data");
-        axios.get('/api/post_list').then((postList) => {
-            this.setState((prevState, postList) => ({
-                posts: postList
-            }))
-        })
+
     }
 
     render() {
         return (
+        <div>
             <MuiThemeProvider>
-                <PostList posts={this.state.posts}/>
+                <AppBar/>
             </MuiThemeProvider>
-            )
+            {this.props.children}
+        </div>
+
+
+    )
     }
 }
 
