@@ -1,6 +1,8 @@
 import React from 'react';
-import {Layout, Menu} from 'antd';
+import {Layout, Row, Col} from 'antd';
 import 'antd/dist/antd.css';
+
+import TopBar from '../partial/TopBar.jsx';
 
 const {Header, Content, Footer} = Layout;
 
@@ -26,11 +28,12 @@ class App extends React.Component {
         return (
 
             <Layout className="layout">
-                <div>
-                    <Menu mode="horizontal" theme="light">
-                        <Menu.Item key="1">Index</Menu.Item>
-                    </Menu>
-                </div>
+
+                <Row>
+                    <Col span={12} push={12}>
+                        <TopBar/>
+                    </Col>
+                </Row>
 
                 <Content>
                     {this.props.children}
@@ -41,8 +44,20 @@ class App extends React.Component {
                 </Footer>
             </Layout>
 
+            //
+            // <Row>
+            // <Col span={18} push={6}>
+            // <Menu mode="hotizontal">
+            // <Menu.Item key="1">Index</Menu.Item>
+            // </Menu>
+            // </Col>
+            // </Row>
+            // <Row>
+            // {this.props.children}
+            // </Row>
+            // </div>
 
-    )
+        )
     }
 }
 

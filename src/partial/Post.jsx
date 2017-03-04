@@ -3,18 +3,18 @@ import {
     Card, CardActions, CardHeader, CardMedia, CardTitle, CardText
 } from 'material-ui/Card';
 
-export default class Single extends React.Component {
+export default class Post extends React.Component {
     constructor(props) {
         super(props);
     }
 
     render () {
-        let {title, text} = this.props;
+        let {post} = this.props;
         return (
-            <Card>
-                <CardTitle title={title}/>
-                <CardText>{text}</CardText>
-            </Card>
+            <div>
+                <h3>{post.title}</h3>
+                <p>{post.content}</p>
+            </div>
         )
     }
 }

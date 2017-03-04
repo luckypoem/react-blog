@@ -1,6 +1,8 @@
 import React from 'react';
-import PostCard from './PostCard.jsx'
 import axios from 'axios';
+
+import PostCardContainer from '../container/PostCardContainer.jsx';
+
 
 
 class PostList extends React.Component {
@@ -30,7 +32,7 @@ class PostList extends React.Component {
                     this.state.posts.map((post) => {
                         i += 1;
                         return (
-                            <PostCard post={post} key={i}/>
+                            <PostCardContainer post={post} key={i}/>
                         )
                     })
                 }

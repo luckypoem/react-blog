@@ -1,18 +1,35 @@
 import React from 'react';
-import {Card} from 'antd';
+import {Link} from 'react-router';
+// import {Card} from 'antd';
 
 class PostCard extends React.Component {
     constructor(props) {
         super(props);
+        this.handleClick = this.handleClick.bind(this)
     }
+
+    handleClick(e) {
+        let {setPostID, post} = this.props;
+        setPostID(post._id);
+        return;
+    }
+
 
     render() {
         let {post} = this.props;
+
         return (
-            <Card title={post.title}>
-                {post.content}
-            </Card>
+            <div>
+                <Link
+                    to={'/post/' + post.title}
+                    onClick={this.handleClick}
+                >
+                    <h3>{post.title}</h3>
+                </Link>
+                <p>{post.content}</p>
+            </div>
         )
     }
+
 }
 export default PostCard;
