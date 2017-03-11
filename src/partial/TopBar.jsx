@@ -11,8 +11,17 @@ class TopBar extends React.Component {
 
 
     handleClick(item) {
-        console.log('click', item);
-        browserHistory.push('/');
+        switch (item.key) {
+            case '1':
+                browserHistory.push('/');
+                break;
+            case '2':
+                browserHistory.push('/about');
+                break;
+            case '3':
+                browserHistory.push('/admin');
+                break;
+        }
     }
 
 
@@ -23,6 +32,7 @@ class TopBar extends React.Component {
             >
                 <Menu.Item key="1">Index</Menu.Item>
                 <Menu.Item key="2">About</Menu.Item>
+                <Menu.Item key="3">Admin</Menu.Item>
             </Menu>
         )
     }

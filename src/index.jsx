@@ -6,8 +6,13 @@ import { Provider } from 'react-redux';
 
 import store from './store/createStore';
 import App from './module/App.jsx';
+
 import PostList from './partial/PostList.jsx'
 import PostCardContainer from './container/PostContainer.jsx'
+
+import Admin from './container/Admin.jsx';
+import AdminPanel from './module/AdminPanel.jsx';
+import LogInterferceContainer from './container/LogInterferceContainer.jsx';
 
 injectTapEventPlugin();
 ReactDOM.render(
@@ -18,6 +23,8 @@ ReactDOM.render(
                 <IndexRoute component={PostList}/>
                 <Route path="/post/:postName" component={PostCardContainer}/>
             </Route>
+            <Route path="/admin/login" component={LogInterferceContainer}/>
+            <Route path="/admin" component={Admin}/>
         </Router>
     </Provider>
     ), document.getElementById('blog')

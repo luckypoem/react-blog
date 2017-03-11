@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import {LOAD_SPECIFIED_POST} from './actions';
+import {LOAD_SPECIFIED_POST, LOG_IN_USER} from './actions';
 
 function specifiedPost(postID = '', action) {
     switch (action.type) {
@@ -12,6 +12,17 @@ function specifiedPost(postID = '', action) {
     }
 }
 
+function loggedInUserName(userName = '', action) {
+    switch (action.type) {
+        case LOG_IN_USER:
+            return action.userName;
+
+        default:
+            return userName;
+    }
+}
+
 export default combineReducers({
-    postID: specifiedPost
+    postID: specifiedPost,
+    user: loggedInUserName
 });
