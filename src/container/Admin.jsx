@@ -17,7 +17,7 @@ class Admin extends React.Component {
     }
 
     render() {
-        return <AdminPanel/>
+        return <AdminPanel children={this.props.children}/>
     }
 }
 

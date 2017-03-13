@@ -11,8 +11,8 @@ import PostList from './partial/PostList.jsx'
 import PostCardContainer from './container/PostContainer.jsx'
 
 import Admin from './container/Admin.jsx';
-import AdminPanel from './module/AdminPanel.jsx';
 import LogInterferceContainer from './container/LogInterferceContainer.jsx';
+import NewPost from './partial/admin/NewPost.jsx';
 
 injectTapEventPlugin();
 ReactDOM.render(
@@ -24,7 +24,9 @@ ReactDOM.render(
                 <Route path="/post/:postName" component={PostCardContainer}/>
             </Route>
             <Route path="/admin/login" component={LogInterferceContainer}/>
-            <Route path="/admin" component={Admin}/>
+            <Route path="/admin" component={Admin}>
+                <Route path="/admin/post/new_post" component={NewPost}/>
+            </Route>
         </Router>
     </Provider>
     ), document.getElementById('blog')

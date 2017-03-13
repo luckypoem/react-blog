@@ -3,7 +3,7 @@ import cookie from 'react-cookie';
 import {browserHistory} from 'react-router';
 import {Row, Col} from 'antd';
 
-import AdminMenu from '../partial/AdminMenu.jsx';
+import AdminMenu from '../partial/admin/AdminMenu.jsx';
 
 class AdminPanel extends React.Component {
     constructor(props) {
