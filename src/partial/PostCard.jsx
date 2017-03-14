@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import {Link} from 'react-router';
 // import {Card} from 'antd';
 
@@ -14,10 +15,19 @@ class PostCard extends React.Component {
         return;
     }
 
+    componentDidMount() {
+        let {post} = this.props;
+        const newContent = (
+            <div>
+                {post.content}
+            </div>
+        );
+    }
 
     render() {
         let {post} = this.props;
 
+        const postBody = {__html: post.content};
         return (
             <div>
                 <Link
@@ -26,7 +36,7 @@ class PostCard extends React.Component {
                 >
                     <h3>{post.title}</h3>
                 </Link>
-                <p>{post.content}</p>
+                <div dangerouslySetInnerHTML={postBody}/>
             </div>
         )
     }

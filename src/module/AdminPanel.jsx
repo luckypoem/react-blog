@@ -20,7 +20,7 @@ class AdminPanel extends React.Component {
                     <Col span={6}>
                         <AdminMenu/>
                     </Col>
-                    <Col span={12}>
+                    <Col span={16}>
                         {this.props.children}
                     </Col>
                 </Row>

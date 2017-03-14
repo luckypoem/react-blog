@@ -1,7 +1,9 @@
 import React from 'react';
 import {Form, Input, Button, Checkbox} from 'antd';
+import axios from 'axios';
 
 import Store from '../../store/createStore';
+import {TextEditor, output} from '../TextEditor.jsx';
 
 const FormItem = Form.Item;
 class NewPost extends React.Component {
@@ -15,8 +17,19 @@ class NewPost extends React.Component {
         let form = this.props.form;
         let user = Store.getState().user,
             postTitle = form.getFieldValue('postTitle'),
-            postContent = form.getFieldValue('postContent');
+            postContent = output();
         console.log(user,postContent,postTitle);
+        axios.post('/api/admin/post/new_post', {
+            author: user,
+            title: postTitle,
+            post: postContent
+        }).then((result)=>{
+            if (result.data.success) {
+                console.log('success')
+            } else {
+                console.log('fail')
+            }
+        })
     }
 
     render() {
@@ -36,9 +49,7 @@ class NewPost extends React.Component {
                 </FormItem>
 
                 <FormItem>
-                    {getFieldDecorator('postContent', {})(
-                        <Input type='textarea' size='large'/>
-                    )}
+                    <TextEditor/>
                 </FormItem>
 
                 <FormItem>

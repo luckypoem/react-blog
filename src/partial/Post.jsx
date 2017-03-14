@@ -10,10 +10,11 @@ export default class Post extends React.Component {
 
     render () {
         let {post} = this.props;
+        const postBody = {__html: post.content};
         return (
             <div>
                 <h3>{post.title}</h3>
-                <p>{post.content}</p>
+                <div dangerouslySetInnerHTML={postBody}/>
             </div>
         )
     }

@@ -6,7 +6,11 @@
 * */
 
 const router = require('koa-router')(),
-    user = require('../lib').user;
+    lib = require('../lib');
+
+const userLib = lib.user,
+    postLib = lib.post;
+
 
 router.get('/', function *() {
     if (this.session.isNew) {       // not logged in
@@ -24,7 +28,7 @@ router.get('/', function *() {
 router.post('/', function *() {
     let userName = this.request.body.user,
         password = this.request.body.password;
-    let result = yield user.checkUser(userName, password).then((result) => {
+    let result = yield userLib.checkUser(userName, password).then((result) => {
         if (result.length !== 1) {
             return false;
         } else {
@@ -35,6 +39,24 @@ router.post('/', function *() {
         this.body = {passed: true};
     } else {
         this.body = {passed: false};
+    }
+});
+
+router.post('/post/new_post', function *() {
+    let author = this.request.body.author,
+        title = this.request.body.title,
+        post = this.request.body.post;
+
+    let result = yield postLib.addPost({
+        author: author,
+        title: title,
+        content: post
+    }).then(()=>{return true;}, ()=>{return false;});
+
+    if(result) {
+        this.body = {success: true};
+    } else {
+        this.body = {success: false};
     }
 });
 

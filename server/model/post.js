@@ -2,10 +2,7 @@ const mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 const postSchema = new Schema({
-    author: {
-        name: {type: String, required: true},
-        email: {type: String, required: true}
-    },
+    author: {type: String, required: true},
     title: { type: String, required: true},
     content: { type: String, required: true},
     tag: {type: String},
