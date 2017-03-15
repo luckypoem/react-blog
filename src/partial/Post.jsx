@@ -1,7 +1,4 @@
 import React from 'react';
-import {
-    Card, CardActions, CardHeader, CardMedia, CardTitle, CardText
-} from 'material-ui/Card';
 
 export default class Post extends React.Component {
     constructor(props) {
@@ -9,12 +6,29 @@ export default class Post extends React.Component {
     }
 
     render () {
+        const style = {
+                marginTop: '5%',
+                marginBottom: '5%',
+                lineHeight: '200%',
+
+                fontSize: '1.5em',
+            },
+
+            content_style = {
+                marginTop: '5%',
+
+                fontSize: '1em',
+                lineHeight: '200%',
+
+                paddingBottom: '350%',
+            };
+
         let {post} = this.props;
         const postBody = {__html: post.content};
         return (
-            <div>
-                <h3>{post.title}</h3>
-                <div dangerouslySetInnerHTML={postBody}/>
+            <div style={style}>
+                <h2>{post.title}</h2>
+                <div className="content" style={content_style} dangerouslySetInnerHTML={postBody}/>
             </div>
         )
     }

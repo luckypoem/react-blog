@@ -25,18 +25,31 @@ class PostCard extends React.Component {
     }
 
     render() {
+        const style = {
+            'marginBottom': '5%',
+
+                'font-size': '1.2em',
+
+            },
+
+            contentStyle = {
+                'marginTop': '2%',
+                'lineHeight': '150%',
+                'font-size': '1.2em',
+
+            };
         let {post} = this.props;
 
         const postBody = {__html: post.content};
         return (
-            <div>
+            <div style={style}>
                 <Link
                     to={'/post/' + post.title}
                     onClick={this.handleClick}
                 >
-                    <h3>{post.title}</h3>
+                    <h2>{post.title}</h2>
                 </Link>
-                <div dangerouslySetInnerHTML={postBody}/>
+                <div style={contentStyle} dangerouslySetInnerHTML={postBody}/>
             </div>
         )
     }

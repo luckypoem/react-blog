@@ -27,7 +27,7 @@ class App extends React.Component {
     render() {
         return (
 
-            <Layout className="layout">
+            <div className="layout">
 
                 <Row>
                     <Col span={12} push={12}>
@@ -35,14 +35,16 @@ class App extends React.Component {
                     </Col>
                 </Row>
 
-                <Content>
-                    {this.props.children}
-                </Content>
+                <Row>
+                    <Col span={12} push={6}>
+                        {this.props.children}
+                    </Col>
+                </Row>
 
                 <Footer>
                     Designed by zhboner.
                 </Footer>
-            </Layout>
+            </div>
 
             //
             // <Row>

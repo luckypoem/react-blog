@@ -12,6 +12,11 @@ class AdminMenu extends React.Component {
     }
 
     handleClick(item) {
+        if(item.key == '0') {
+            browserHistory.push('/');
+            return;
+        }
+
         let pathArray = item.keyPath;
         pathArray.push('/admin');
         pathArray.reverse();
@@ -24,6 +29,7 @@ class AdminMenu extends React.Component {
 
         return (
             <Menu onClick={this.handleClick} mode="inline">
+                <Item key="0">Front page</Item>
                 <SubMenu key="post" title="Post">
                     <Item key="new_post">New post</Item>
                 </SubMenu>

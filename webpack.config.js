@@ -6,6 +6,10 @@ module.exports = {
         path: path.resolve(__dirname, './public'),
         filename: 'app.js'
     },
+    externals: {
+        'react': 'React',
+        'react-dom': 'ReactDOM',
+    },
     module: {
         loaders: [
             {

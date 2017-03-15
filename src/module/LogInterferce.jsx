@@ -1,5 +1,5 @@
 import React from 'react';
-import {browserHistory} from 'react-router';
+import {browserHistory, Link} from 'react-router';
 import axios from 'axios';
 import {Row, Col, Form, Icon, Input, Button, Checkbox} from 'antd';
 
@@ -80,6 +80,7 @@ class LogInterferce extends React.Component {
                             </FormItem>
 
                         </Form>
+                        <Link to="/">Back to front page.</Link>
                     </Col>
                 </Row>
             </div>
