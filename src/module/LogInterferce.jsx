@@ -2,6 +2,7 @@ import React from 'react';
 import {browserHistory, Link} from 'react-router';
 import axios from 'axios';
 import {Row, Col, Form, Icon, Input, Button, Checkbox} from 'antd';
+import cookie from 'react-cookie';
 
 import Store from '../store/createStore';
 
@@ -16,6 +17,21 @@ class LogInterferce extends React.Component {
         if (this.props.user) {
             browserHistory.push('/');
         }
+        else {
+            let userName = cookie.load('user'),
+                password = cookie.load('password'),
+                {handleLogin} = this.props;
+
+            axios.post('/api/admin', {
+                user: userName,
+                password: password
+            }).then((result) => {
+                if (result.data.passed) {
+                    handleLogin(userName);
+                    browserHistory.push('/admin');
+                }
+            })
+        }
     }
 
     handleSubmit(e) {
@@ -24,7 +40,8 @@ class LogInterferce extends React.Component {
             form = this.props.form;
 
         let userName = form.getFieldValue('userName'),
-            password = form.getFieldValue('password');
+            password = form.getFieldValue('password'),
+            saveCookie = form.getFieldValue('remember');
 
         axios.post('/api/admin', {
             user: userName,
@@ -33,6 +50,12 @@ class LogInterferce extends React.Component {
             if (result.data.passed) {
                 browserHistory.push('/');
                 handleLogin(userName);
+
+                let cookieOption = {
+                    path: '/',
+                };
+                cookie.save('user', userName, cookieOption);
+                cookie.save('password', password, cookieOption);
             } else {
                 form.setFieldsValue({
                     userName: '',
