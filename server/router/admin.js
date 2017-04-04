@@ -12,18 +12,18 @@ const userLib = lib.user,
     postLib = lib.post;
 
 
-router.get('/', function *() {
-    if (this.session.isNew) {       // not logged in
-        this.body = {
-            'loggedIn': false
-        }
-    }
-    else {
-        this.body = {
-            'loggedIn': true
-        }
-    }
-});
+// router.get('/', function *() {
+//     if (this.session.isNew) {       // not logged in
+//         this.body = {
+//             'loggedIn': false
+//         }
+//     }
+//     else {
+//         this.body = {
+//             'loggedIn': true
+//         }
+//     }
+// });
 
 router.post('/', function *() {
     let userName = this.request.body.user,

@@ -1,7 +1,7 @@
 import React from 'react';
 import {browserHistory, Link} from 'react-router';
 import axios from 'axios';
-import {Row, Col, Form, Icon, Input, Button, Checkbox} from 'antd';
+import {Row, Col, Form, Icon, Input, Button, Checkbox, message} from 'antd';
 import cookie from 'react-cookie';
 
 import Store from '../store/createStore';
@@ -57,6 +57,7 @@ class LogInterferce extends React.Component {
                 cookie.save('user', userName, cookieOption);
                 cookie.save('password', password, cookieOption);
             } else {
+                message.error("user name or password not valid!");
                 form.setFieldsValue({
                     userName: '',
                     password: ''

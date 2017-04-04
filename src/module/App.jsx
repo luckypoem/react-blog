@@ -1,5 +1,5 @@
 import React from 'react';
-import {Layout, Row, Col} from 'antd';
+import {Layout, Row, Col, BackTop} from 'antd';
 import 'antd/dist/antd.css';
 
 import TopBar from '../partial/TopBar.jsx';
@@ -13,23 +13,16 @@ class App extends React.Component {
             part: 0,
             posts: []
         };
-        this.fetchPosts = this.fetchPosts.bind(this);
-    }
-
-    fetchPosts() {
-
-    }
-
-    componentDidMount() {
-
     }
 
     render() {
+        let topStyle = {
+            marginTop: '2em',
+            marginBottom: '5em'
+        };
         return (
-
             <div className="layout">
-
-                <Row>
+                <Row style={topStyle}>
                     <Col span={12} push={12}>
                         <TopBar/>
                     </Col>
@@ -39,26 +32,15 @@ class App extends React.Component {
                     <Col span={12} push={6}>
                         {this.props.children}
                     </Col>
+                    <Col span={3} push={20}>
+                        <BackTop />
+                    </Col>
                 </Row>
 
                 <Footer>
                     Designed by zhboner.
                 </Footer>
             </div>
-
-            //
-            // <Row>
-            // <Col span={18} push={6}>
-            // <Menu mode="hotizontal">
-            // <Menu.Item key="1">Index</Menu.Item>
-            // </Menu>
-            // </Col>
-            // </Row>
-            // <Row>
-            // {this.props.children}
-            // </Row>
-            // </div>
-
         )
     }
 }
