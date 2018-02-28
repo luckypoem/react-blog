@@ -6,5 +6,3 @@ Tools used in this system are as below.
 - react (frontend)
 - redux (state management)
 - ant design (an UI library)
-
-This system is still being developed and I will keep updating this article to log down new features and changes.
